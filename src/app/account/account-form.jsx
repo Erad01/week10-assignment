@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import Avatar from "./avatar";
 
 export default function AccountForm({ user }) {
   const supabase = createClient();
@@ -8,6 +9,7 @@ export default function AccountForm({ user }) {
   const [fullname, setFullname] = useState(null);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
+  const [avatar_url, setAvatarUrl] = useState(null);
 
   const getProfile = useCallback(async () => {
     try {
@@ -48,6 +50,7 @@ export default function AccountForm({ user }) {
         full_name: fullname,
         username,
         website,
+        avatar_url,
         updated_at: new Date().toISOString(),
       });
       if (error) throw error;
@@ -73,7 +76,17 @@ export default function AccountForm({ user }) {
           value={fullname || ""}
           onChange={(e) => setFullname(e.target.value)}
         />
+        <Avatar
+          uid={user?.id}
+          url={avatar_url}
+          size={150}
+          onUpload={(url) => {
+            setAvatarUrl(url);
+            updateProfile({ fullname, username, website, avatar_url: url });
+          }}
+        />
       </div>
+
       <div>
         <label htmlFor="username">Username</label>
         <input
