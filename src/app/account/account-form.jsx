@@ -29,6 +29,7 @@ export default function AccountForm({ user }) {
         setFullname(data.full_name);
         setUsername(data.username);
         setWebsite(data.website);
+        setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
       alert("Error loading user data!");
