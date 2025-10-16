@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@/utils/supabase/client";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -47,12 +47,19 @@ export default function AdminPage() {
   }, []);
 
   if (loading) return <p>Loading...</p>;
-  if (!profile || !profile.is_admin) {
+  if (!profile?.is_admin) {
     return (
       <div>
-        <h1>Admin Dashboard</h1>
-        <p>Welcome</p>
+        <h1>Access Denied</h1>
+        <p>You don’t have permission to view this page.</p>
       </div>
     );
   }
+
+  return (
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>Welcome, {profile.username}</p>
+    </div>
+  );
 }
