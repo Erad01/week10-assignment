@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+when creating a user management system using supabase you will need to set up a Next.js app and install the client library of supabase with npm install @supabase/supabase-js which allows your javascript or typescript code to interact with your Supabase backend directly. providing the functions of connecting to your supabase project, Querying your database (CRUD operations), what we are using it for Managing users (sign up, sign in, sign out), Listening to real-time updates and Uploading and downloading files from Supabase Storage
 
-## Getting Started
+then you will need to install supabase's client library for server-side rendering (SSR) with npm install @supabase/ssr, while normally, you’d use @supabase/supabase-js (the regular client) to talk to your Supabase backend. However, in SSR environments, it allows you to be more complex with what you can do as you may need to share authentication state between server and client (cookies, sessions),what we will be using it for is to run Supabase queries securely on the server (so secrets aren’t exposed), it also allows you to hydrate the Supabase client on the browser after the page loads.
 
-First, run the development server:
+@supabase/ssr helps handle those scenarios automatically.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    🎯 What requirements did you achieve?
+    🎯 Were there any requirements or goals that you were unable to achieve?
+    🎯 If so, what was it that you found difficult about these tasks?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use the documentation to find out what it does, how to install it, what syntax to use
