@@ -8,15 +8,16 @@ const supabase = createClient(
 );
 
 export default function AdminPage() {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchProfile() {
-      // Get session (v2)
       const {
         data: { session },
       } = await supabase.auth.getSession();
+
+      console.log("Fetched session:", session);
 
       if (!session?.user) {
         setProfile(null);
@@ -29,13 +30,14 @@ export default function AdminPage() {
       const { data, error } = await supabase
         .from("profiles")
         .select("id, username, is_admin")
-        .eq("id", session.userId)
+        .eq("id", userId)
         .single();
 
       if (error) {
         console.error("Error fetching profile:", error.message);
         setProfile(null);
       } else {
+        console.log("Fetched profile:", data);
         setProfile(data);
       }
       setLoading(false);
@@ -45,11 +47,12 @@ export default function AdminPage() {
   }, []);
 
   if (loading) return <p>Loading...</p>;
-
-  return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <p>Welcome</p>
-    </div>
-  );
+  if (!profile || !profile.is_admin) {
+    return (
+      <div>
+        <h1>Admin Dashboard</h1>
+        <p>Welcome</p>
+      </div>
+    );
+  }
 }
