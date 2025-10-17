@@ -178,11 +178,10 @@ return (
 
 which if neither conditions are triggered (loading is false and the profile.is_admin = True) the component renders the admin dashboard.
 
-    🎯 What requirements did you achieve?
-    🎯 Were there any requirements or goals that you were unable to achieve?
-    🎯 If so, what was it that you found difficult about these tasks?
+Reflection
 
-Use the documentation to find out what it does, how to install it, what syntax to use
+During this project we learned how to approach a new piece of code that we haven't been taught and how to find appropriate documentation to implement it in a functional manner. 
+through out this project we each showcased different strengths and weaknesses and as a result we where able to combine these strengths through out this project on order to create the app and when we did encounter any issues we where able to ask for help from the group to problem solve and find a solution.
 
 Resources
 
